@@ -20,3 +20,15 @@ se genera por comandos un proyecto de nest, igual que cuando creas un proyecto d
 >> nest generate module tasks (esto genera el modulo "tasks" que es el encargado de "administrar" el servicio(providers) y el controlador para todo lo relacionado a tasks
 
 a su vez tambien en la raiz del proyecto, esta el app.module.ts el cual "administra" todos los controladores y servicios(providers) y los modulos
+
+
+
+
+############# TYPE ORM #############
+esto lo instalo para manejar mongo con node (el "hibernate" de mongo para node)
+>> npm i @nestjs/mongoose mongoose
+
+esto lo instalo para que cuando codeo me recomiende los comandos de mongoose
+>> npm i @types/mongoose -D
+
+
