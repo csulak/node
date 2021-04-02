@@ -1,0 +1,22 @@
+se genera por comandos un proyecto de nest, igual que cuando creas un proyecto de react
+
+
+ instala nest cli -> generador de proyectos de nest (similar a lo que pasa con react)
+>> npm i -g @nestjs/cli
+
+ esto crea un nuevo proyecto de node con el framework nest  "node-nest" es el nombre que le elegi
+>> nest new node-nest
+
+ mientras lo instalas te pregunta si queres usar npm o yarn, elegis uno de los dos le das enter y listo
+
+ >> npm run build (esto es para traspilar todo el codigo a js que es el codigo que subiriamos a prod)
+ 
+ >> npm run start:dev (Es para levantar el proyecto)
+ 
+ >> nest generate controller tasks (esto genera el controlador "tasks")
+ 
+>> nest generate service tasks (esto genera el servicio "tasks")
+
+>> nest generate module tasks (esto genera el modulo "tasks" que es el encargado de "administrar" el servicio(providers) y el controlador para todo lo relacionado a tasks
+
+a su vez tambien en la raiz del proyecto, esta el app.module.ts el cual "administra" todos los controladores y servicios(providers) y los modulos
