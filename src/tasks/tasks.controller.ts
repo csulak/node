@@ -13,14 +13,13 @@ import { CreateTaskDto } from './dto/create-task-dto';
 import { Request, response } from 'express';
 import { TasksService } from './tasks.service';
 import { Task } from './interfaces/Task';
-import { UpdateTaskDto } from './dto/update-task-dto';
 
 @Controller('tasks')
 export class TasksController {
   constructor(private taskService: TasksService) {}
 
   @Get()
-  getTasks(): Promise<Task[]> {
+  getTasks(): Task[] {
     return this.taskService.getTasks();
   }
   /**
@@ -32,23 +31,25 @@ export class TasksController {
    */
 
   @Get(':id')
-  getTask(@Param('id') id: string): Promise<Task> {
-    return this.taskService.getTask(id);
+  getTask(@Param('id') id: string): Task {
+    return this.taskService.getTask(parseInt(id));
   }
 
   @Post()
-  createTask(@Body() task: CreateTaskDto): Promise<Task> {
-    return this.taskService.createTask(task);
+  createTask(@Body() task: CreateTaskDto): string {
+    console.log({ task });
+    return 'creando tarea';
   }
 
   @Put(':id')
-  updateTask(@Body() taskToUpdate: UpdateTaskDto): Promise<Task> {
-    console.log({ taskToUpdate });
-    return this.taskService.updateTask(taskToUpdate);
+  updateTask(@Body() task: CreateTaskDto, @Param('id') id): string {
+    console.log({ task });
+    console.log({ id });
+    return 'actualizando una tarea';
   }
 
   @Delete(':id')
-  deleteTask(@Param('id') id: string) {
-    return this.taskService.deleteTask(id);
+  deleteTask(@Param('id') id): string {
+    return `eliminando una tarea numero: ${id}`;
   }
 }

@@ -1,6 +1,4 @@
-import { Document } from 'mongoose';
-
-export interface Task extends Document {
+export interface Task {
   id?: number;
   title: string;
   description: string;
