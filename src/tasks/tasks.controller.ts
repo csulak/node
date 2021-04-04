@@ -43,7 +43,6 @@ export class TasksController {
 
   @Put(':id')
   updateTask(@Body() taskToUpdate: UpdateTaskDto): Promise<Task> {
-    console.log({ taskToUpdate });
     return this.taskService.updateTask(taskToUpdate);
   }
 
