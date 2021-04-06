@@ -32,3 +32,17 @@ esto lo instalo para que cuando codeo me recomiende los comandos de mongoose
 >> npm i @types/mongoose -D
 
 
+
+
+
+
+
+
+##############################
+
+run master (mysql)
+tener levantada una instancia de mysql en el puerto default
+crear base de datos con nombre que tenga en ormconfig.json
+>> npm run build
+
+>> npm run start:dev
