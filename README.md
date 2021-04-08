@@ -103,6 +103,6 @@ Express Js beginner [course](https://www.youtube.com/watch?v=794Q71KVw1k&ab_chan
 
 From [here](https://www.youtube.com/watch?v=pCxL1sdjeCc&ab_channel=FaztCode) I learnt MySql TypeOrm
 
-How To apply (Swagger)[https://www.youtube.com/watch?v=VipXIb1KzaA&ab_channel=DominiCode] in your node project (basic)
+How To apply [Swagger](https://www.youtube.com/watch?v=VipXIb1KzaA&ab_channel=DominiCode) in your node project (basic)
 
-How To apply (Swagger)[https://www.youtube.com/watch?v=r0TP4DdXeIk&ab_channel=KelvinMai] in your node project (intermediate)
+How To apply [Swagger](https://www.youtube.com/watch?v=r0TP4DdXeIk&ab_channel=KelvinMai) in your node project (intermediate)
