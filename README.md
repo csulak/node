@@ -35,6 +35,10 @@ $ npm install
 
 # Mongo branch
 
+- Make sure to have an Mongo DB instance running on the specified port
+
+- Check the [app.module.ts](https://github.com/csulak/node/blob/Mongo-TypeOrm/src/app.module.ts) file, on import you can see **MongooseModule** and their specific configurations
+
 - [Here](https://www.youtube.com/watch?v=JTvGImRESzg&ab_channel=ATOM) you have a basic tutorial of how to install Mongo DB on linux
 
 # Running the app
@@ -42,6 +46,9 @@ $ npm install
 ```bash
 
 # Step 0
+$ npm i
+
+# Step 0 bis
 $ npm run build
 
 # development
