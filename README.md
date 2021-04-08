@@ -9,6 +9,7 @@
 - [Running the app](#running-the-app)
 - [Swagger Endpoints](#swagger-endpoints)
 - [Steps to create base project](#steps-to-create-base-project)
+- [Util links](#util-links)
 
 # About
 
@@ -81,3 +82,20 @@ $ nest generate module tasks
 ```
 
 You can see in the root of the project are: app.module, app.service, app.controller. Those are the mains.
+
+# Util links
+
+[Official Nest js Documentation](https://docs.nestjs.com/)
+
+- [mongo with Nest ](https://docs.nestjs.com/techniques/database)
+- [mysql with Nest](https://docs.nestjs.com/techniques/mongodb)
+
+From [here](https://www.youtube.com/watch?v=ulfU5vY6I78&ab_channel=Academind) I learnt to make PUT in mongo and throw 404 exception]
+
+Express Js beginner [course](https://www.youtube.com/watch?v=794Q71KVw1k&ab_channel=Fazt)
+
+From [here](https://www.youtube.com/watch?v=pCxL1sdjeCc&ab_channel=FaztCode) I learnt MySql TypeOrm
+
+How To apply (Swagger)[https://www.youtube.com/watch?v=VipXIb1KzaA&ab_channel=DominiCode] in your node project (basic)
+
+How To apply (Swagger)[https://www.youtube.com/watch?v=r0TP4DdXeIk&ab_channel=KelvinMai] in your node project (intermediate)
