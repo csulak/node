@@ -1,41 +1,35 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-//import { Task } from './interfaces/Task';
-import { DeleteResult } from 'typeorm';
+import { Task } from './interfaces/Task';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
 import { CreateTaskDto } from './dto/create-task-dto';
 import { UpdateTaskDto } from './dto/update-task-dto';
-import { Task } from './entity/task';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
 
 @Injectable()
 export class TasksService {
-  constructor(
-    @InjectRepository(Task)
-    private tasksRepository: Repository<Task>,
-  ) {}
+  constructor(@InjectModel('Task') private taskModel: Model<Task>) {}
 
-  getTasks() {
-    return this.tasksRepository.find();
+  async getTasks() {
+    return await this.taskModel.find();
   }
 
   async getTask(id: string) {
-    const task = await this.tasksRepository.findOne(id);
-    if (task) {
-      return task;
-    } else {
-      throw new NotFoundException(`Could not find task =( with id: ${id}`);
+    let task;
+
+    try {
+      task = await this.taskModel.findById(id);
+    } catch (error) {
+      throw new NotFoundException(`Could not find product =( with id: ${id}`);
     }
-  }
-
-  createTask(task: CreateTaskDto): Promise<Task> {
-    const newTask = this.tasksRepository.create(task);
-    return this.tasksRepository.save(newTask);
-  }
-
-  deleteTask(id: string): Promise<DeleteResult> {
-    const task = this.tasksRepository.delete(id);
-
+    if (!task) {
+      throw new NotFoundException(`Could not find product =( with id: ${id}`);
+    }
     return task;
+  }
+
+  async createTask(task: CreateTaskDto) {
+    const newTask = new this.taskModel(task);
+    return await newTask.save();
   }
 
   async updateTask(taskToUpdate: UpdateTaskDto) {
@@ -51,6 +45,10 @@ export class TasksService {
       updatedTask.done = taskToUpdate.done;
     }
 
-    return this.tasksRepository.save(updatedTask);
+    return await updatedTask.save();
+  }
+
+  async deleteTask(id: string) {
+    return await this.taskModel.deleteOne({ _id: id });
   }
 }
