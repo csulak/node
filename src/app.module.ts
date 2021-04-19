@@ -13,10 +13,9 @@ import { MongooseModule } from '@nestjs/mongoose';
   imports: [
     TasksModule,
     MongooseModule.forRoot('mongodb://localhost/node-nest1'),
-    GifsModule
+    GifsModule,
   ],
   controllers: [AppController, TasksController],
   providers: [AppService, GifsService],
-  
 })
 export class AppModule {}
