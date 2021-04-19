@@ -46,3 +46,19 @@ crear base de datos con nombre que tenga en ormconfig.json
 >> npm run build
 
 >> npm run start:dev
+
+
+
+
+
+
+
+
+#################################
+
+
+cache
+
+$ npm install cache-manager
+$ npm install -D @types/cache-manager
+
