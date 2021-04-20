@@ -3,7 +3,6 @@ import {
   HttpService,
   Inject,
   CACHE_MANAGER,
-  NotFoundException,
   HttpException,
 } from '@nestjs/common';
 import { map, catchError } from 'rxjs/operators';
@@ -36,7 +35,6 @@ export class GifsService {
       .pipe(map((response) => response.data))
       .pipe(
         catchError((e) => {
-          console.log('asdasd', e.response.data);
           throw new HttpException(
             {
               ...e.response.data,
