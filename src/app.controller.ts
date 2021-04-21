@@ -10,8 +10,8 @@ export class AppController {
     return this.appService.getHello();
   }
 
-  @Post('/clear/mem/cache')
-  async clearMemoryCache() {
-    return await this.appService.clearMemoryCache();
+  @Post('/clear/every/caches')
+  async clearEveryCaches() {
+    return await this.appService.clearEveryCaches();
   }
 }

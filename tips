@@ -62,3 +62,8 @@ cache
 $ npm install cache-manager
 $ npm install -D @types/cache-manager
 
+
+redis cache
+
+$ npm install cache-manager-redis-store --save
+

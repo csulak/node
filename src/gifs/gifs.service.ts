@@ -7,6 +7,9 @@ import {
 } from '@nestjs/common';
 import { map, catchError } from 'rxjs/operators';
 import { Cache } from 'cache-manager';
+import { Gif } from './interfaces/Gif';
+import { AxiosRequestConfig, AxiosResponse } from 'axios';
+import { Observable } from 'rxjs';
 
 export const API_KEY = 'Sc9MBZzmvQXVCYeC4imY4vOcOeQty4Hc';
 
@@ -29,10 +32,21 @@ export class GifsService {
   }
 
   /**returns info related an specific gif id */
-  getGif(gifId: string) {
-    const gifInfo = this.http
+  async getGif(gifId: string): Promise<Observable<Gif>> {
+    const gifInfo = await this.http
       .get(`${API_URL}/gifs/${gifId}?api_key=${API_KEY}`)
+      //.toPromise();
       .pipe(map((response) => response.data))
+      .pipe(
+        map((item) => {
+          return new Gif(
+            item.data.type,
+            item.data.id,
+            item.data.url,
+            item.data.title,
+          );
+        }),
+      )
       .pipe(
         catchError((e) => {
           throw new HttpException(
@@ -45,6 +59,7 @@ export class GifsService {
         }),
       );
 
+    //return gifInfo.data;
     return gifInfo;
   }
 }

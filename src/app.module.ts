@@ -8,10 +8,18 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { GifsController } from './gifs/gifs.controller';
 import { GifsService } from './gifs/gifs.service';
 import { GifsModule } from './gifs/gifs.module';
+import { PokemonsController } from './pokemons/pokemons.controller';
+import { PokemonsService } from './pokemons/pokemons.service';
+import { PokemonsModule } from './pokemons/pokemons.module';
 
 @Module({
-  imports: [TasksModule, TypeOrmModule.forRoot(), GifsModule],
-  controllers: [AppController, TasksController, GifsController],
-  providers: [AppService, TasksService, GifsService],
+  imports: [TasksModule, TypeOrmModule.forRoot(), GifsModule, PokemonsModule],
+  controllers: [
+    AppController,
+    TasksController,
+    GifsController,
+    PokemonsController,
+  ],
+  providers: [AppService, TasksService, GifsService, PokemonsService],
 })
 export class AppModule {}

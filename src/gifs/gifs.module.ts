@@ -4,7 +4,7 @@ import { GifsController } from './gifs.controller';
 
 @Module({
   /** Adding cache on gifs */
-  imports: [HttpModule, CacheModule.register()],
+  imports: [HttpModule, CacheModule.register({})],
   controllers: [GifsController],
   providers: [GifsService],
   exports: [HttpModule, CacheModule],
