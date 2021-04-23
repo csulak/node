@@ -8,14 +8,23 @@ import { GifsController } from './gifs/gifs.controller';
 import { GifsService } from './gifs/gifs.service';
 import { GifsModule } from './gifs/gifs.module';
 import { MongooseModule } from '@nestjs/mongoose';
+import { PokemonsController } from './pokemons/pokemons.controller';
+import { PokemonsService } from './pokemons/pokemons.service';
+import { PokemonsModule } from './pokemons/pokemons.module';
 
 @Module({
   imports: [
     TasksModule,
     MongooseModule.forRoot('mongodb://localhost/node-nest1'),
     GifsModule,
+    PokemonsModule,
   ],
-  controllers: [AppController, TasksController],
-  providers: [AppService, GifsService],
+  controllers: [
+    AppController,
+    TasksController,
+    GifsController,
+    PokemonsController,
+  ],
+  providers: [AppService, TasksService, GifsService, PokemonsService],
 })
 export class AppModule {}

@@ -9,7 +9,7 @@ export class AppService {
     return 'Hello World!';
   }
 
-  async clearMemoryCache() {
+  async clearEveryCaches() {
     return await this.cacheManager.reset();
   }
 }

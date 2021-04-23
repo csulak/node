@@ -62,3 +62,22 @@ cache
 $ npm install cache-manager
 $ npm install -D @types/cache-manager
 
+
+redis cache
+
+$ npm install cache-manager-redis-store --save
+
+
+###################################
+REDIS TIPS
+In Linux when you are running your instance of Redis 
+In a new window linux console run
+>> telnet localhost 6379
+
+and then you can interact with your local instance of Redis
+
+// evact the whole cache
+>> FLUSHALL
+
+// show keys - values
+>> keys *
