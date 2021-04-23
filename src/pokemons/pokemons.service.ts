@@ -8,6 +8,7 @@ import {
 import { map, catchError } from 'rxjs/operators';
 import { Cache } from 'cache-manager';
 import { Observable } from 'rxjs';
+import { Pokemon } from './model/Pokemon';
 
 export const API_URL = 'https://pokeapi.co/api/v2';
 
@@ -26,20 +27,20 @@ export class PokemonsService {
   }
 
   /**returns info related an specific gif id */
-  async getPokemon(pokemonName: string) {
+  async getPokemon(pokemonName: string): Promise<Observable<Pokemon>> {
     const pokemonInfo = await this.http
       .get(`${API_URL}//pokemon/${pokemonName}`)
       .pipe(map((response) => response.data))
-      //   .pipe(
-      //     map((item) => {
-      //       return new Gif(
-      //         item.data.type,
-      //         item.data.id,
-      //         item.data.url,
-      //         item.data.title,
-      //       );
-      //     }),
-      //   )
+      .pipe(
+        map((poke) => {
+          return new Pokemon(
+            poke.name,
+            poke.weight,
+            poke.order,
+            poke.base_experience,
+          );
+        }),
+      )
       .pipe(
         catchError((e) => {
           throw new HttpException(

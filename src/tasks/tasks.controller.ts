@@ -15,7 +15,9 @@ import { TasksService } from './tasks.service';
 import { Task } from './interfaces/Task';
 import { DeleteResult } from 'typeorm';
 import { UpdateTaskDto } from './dto/update-task-dto';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('tasks')
 @Controller('tasks')
 export class TasksController {
   constructor(private taskService: TasksService) {}

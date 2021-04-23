@@ -7,7 +7,7 @@ import {
 } from '@nestjs/common';
 import { map, catchError } from 'rxjs/operators';
 import { Cache } from 'cache-manager';
-import { Gif } from './interfaces/Gif';
+import { Gif } from './model/Gif';
 import { AxiosRequestConfig, AxiosResponse } from 'axios';
 import { Observable } from 'rxjs';
 
@@ -35,6 +35,7 @@ export class GifsService {
   async getGif(gifId: string): Promise<Observable<Gif>> {
     const gifInfo = await this.http
       .get(`${API_URL}/gifs/${gifId}?api_key=${API_KEY}`)
+      // si descomentas la linea .toPromise(); y comentas todo par abajo, retornas una promesa y no un observable
       //.toPromise();
       .pipe(map((response) => response.data))
       .pipe(

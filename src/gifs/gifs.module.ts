@@ -3,7 +3,7 @@ import { GifsService } from './gifs.service';
 import { GifsController } from './gifs.controller';
 
 @Module({
-  /** Adding cache on gifs */
+  /** Adding Mem cache on gifs */
   imports: [HttpModule, CacheModule.register({})],
   controllers: [GifsController],
   providers: [GifsService],

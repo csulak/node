@@ -13,7 +13,8 @@
 
 # About
 
-Project based in nest, basic crud in order to learn about how to connect to DDBB SQL (MySQL -> typeorm) and No-SQL (Mongo -> mongoose)
+Project based in nest, basic crud in order to learn about how to connect to DDBB SQL (MySQL -> typeorm) and No-SQL (Mongo -> mongoose).
+HTTP Module (consume apis), Mem Cache, Redis Cache, Swagger
 
 # Installation
 
@@ -27,6 +28,8 @@ $ npm install
 
 - Make sure to have an MySQL instance running on the specified port (default 3306)
 
+- Generate an instance of Redis Cache running in the default Redis Port 6379
+
 - Create a DB with the name specified in the previous file named
 
 - Tip1: If you have a problems to read the entities, when you are starting the repo, or when you call some endpoint run: `$ npm run build`
@@ -38,6 +41,8 @@ $ npm install
 - Make sure to have an Mongo DB instance running on the specified port
 
 - Check the [app.module.ts](https://github.com/csulak/node/blob/Mongo-TypeOrm/src/app.module.ts) file, on import you can see **MongooseModule** and their specific configurations
+
+- Generate an instance of Redis Cache running in the default Redis Port 6379
 
 - [Here](https://www.youtube.com/watch?v=JTvGImRESzg&ab_channel=ATOM) you have a basic tutorial of how to install Mongo DB on linux
 
