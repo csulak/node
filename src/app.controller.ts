@@ -1,5 +1,6 @@
-import { Controller, Get, Post } from '@nestjs/common';
-import { ApiOperation } from '@nestjs/swagger';
+import { Controller, Get, Post, UseGuards } from '@nestjs/common';
+import { AuthGuard } from '@nestjs/passport';
+import { ApiOperation, ApiSecurity } from '@nestjs/swagger';
 import { AppService } from './app.service';
 
 @Controller()
@@ -17,6 +18,8 @@ export class AppController {
   @ApiOperation({
     summary: 'Clear all Mem and Redis cache',
   })
+  @ApiSecurity('X-API-KEY')
+  @UseGuards(AuthGuard('api-key'))
   @Post('/clear/every/caches')
   async clearEveryCaches() {
     return await this.appService.clearEveryCaches();

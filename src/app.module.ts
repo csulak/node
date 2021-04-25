@@ -11,9 +11,16 @@ import { GifsModule } from './gifs/gifs.module';
 import { PokemonsController } from './pokemons/pokemons.controller';
 import { PokemonsService } from './pokemons/pokemons.service';
 import { PokemonsModule } from './pokemons/pokemons.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
-  imports: [TasksModule, TypeOrmModule.forRoot(), GifsModule, PokemonsModule],
+  imports: [
+    TasksModule,
+    TypeOrmModule.forRoot(),
+    GifsModule,
+    PokemonsModule,
+    AuthModule,
+  ],
   controllers: [
     AppController,
     TasksController,

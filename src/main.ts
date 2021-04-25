@@ -13,6 +13,7 @@ async function bootstrap() {
     .setDescription('Node JS, Express, Nest, and Types ORM')
     .setVersion('1.0.0')
     .addTag('Node')
+    .addApiKey({ type: 'apiKey', name: 'X-API-KEY', in: 'header' }, 'X-API-KEY')
     .build();
 
   const document = SwaggerModule.createDocument(app, options);
