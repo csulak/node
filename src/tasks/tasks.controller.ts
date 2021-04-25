@@ -13,7 +13,6 @@ import { CreateTaskDto } from './dto/create-task-dto';
 import { Request, response } from 'express';
 import { TasksService } from './tasks.service';
 import { Task } from './interfaces/Task';
-import { DeleteResult } from 'typeorm';
 import { UpdateTaskDto } from './dto/update-task-dto';
 import { ApiTags } from '@nestjs/swagger';
 
@@ -44,13 +43,13 @@ export class TasksController {
     return this.taskService.createTask(task);
   }
 
-  @Delete(':id')
-  deleteTask(@Param('id') id: string): Promise<DeleteResult> {
-    return this.taskService.deleteTask(id);
+  @Put(':id')
+  updateTask(@Body() taskToUpdate: UpdateTaskDto): Promise<Task> {
+    return this.taskService.updateTask(taskToUpdate);
   }
 
-  @Put()
-  updateTask(@Body() task: UpdateTaskDto) {
-    return this.taskService.updateTask(task);
+  @Delete(':id')
+  deleteTask(@Param('id') id: string) {
+    return this.taskService.deleteTask(id);
   }
 }
