@@ -5,14 +5,17 @@ import {
   Controller,
   Get,
   Param,
+  UseGuards,
   UseInterceptors,
 } from '@nestjs/common';
-import { ApiOperation, ApiTags } from '@nestjs/swagger';
+import { AuthGuard } from '@nestjs/passport';
+import { ApiOperation, ApiSecurity, ApiTags } from '@nestjs/swagger';
 import { Observable } from 'rxjs';
 import { GifsService } from './gifs.service';
 import { Gif } from './model/Gif';
 
 @ApiTags('gifs')
+@ApiSecurity('X-API-KEY')
 @Controller('gifs')
 export class GifsController {
   constructor(private gifsService: GifsService) {}
@@ -27,6 +30,7 @@ export class GifsController {
     description:
       'You must to send a string name. That is going to be the related gif returned',
   })
+  @UseGuards(AuthGuard('api-key'))
   @Get(':searchParam')
   getGifs(@Param('searchParam') searchParam: string) {
     console.log('this call is going to be mem cached');

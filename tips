@@ -80,4 +80,16 @@ and then you can interact with your local instance of Redis
 >> FLUSHALL
 
 // show keys - values
+
 >> keys *
+
+
+
+############################
+
+api-key
+
+$ npm i passport passport-headerapikey @nestjs/passport --save
+
+$ npm i @types/passport @types/passport-http --save-dev
+
