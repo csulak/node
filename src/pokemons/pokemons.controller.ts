@@ -8,7 +8,6 @@ import {
   UseInterceptors,
 } from '@nestjs/common';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
-import { Observable } from 'rxjs';
 import { Pokemon } from './model/Pokemon';
 import { PokemonsService } from './pokemons.service';
 
@@ -28,7 +27,7 @@ export class PokemonsController {
       'You must to send an offset (int number) that is going to be the number of pokemons returned ',
   })
   @Get(':offset')
-  getGifs(@Param('offset') offset: number) {
+  getPokemons(@Param('offset') offset: number): Promise<any> {
     console.log('this call is going to be redis cached');
     console.log('retrieving list of pokemons with offset: ', offset);
     return this.pokemonsService.getPokemons(offset);
@@ -39,10 +38,8 @@ export class PokemonsController {
   @ApiOperation({
     summary: 'Return info related to an specific pokemon searched',
   })
-  @Get('/specificPokemons/:pokemonName')
-  getGif(
-    @Param('pokemonName') pokemonName: string,
-  ): Promise<Observable<Pokemon>> {
+  @Get('/specificPokemon/:pokemonName')
+  getPokemon(@Param('pokemonName') pokemonName: string): Promise<Pokemon> {
     console.log('this call is going to be redis cached');
     console.log('retrieving info by pokemon: ', pokemonName);
     return this.pokemonsService.getPokemon(pokemonName);

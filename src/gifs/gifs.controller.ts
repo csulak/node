@@ -10,7 +10,6 @@ import {
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { ApiOperation, ApiSecurity, ApiTags } from '@nestjs/swagger';
-import { Observable } from 'rxjs';
 import { GifsService } from './gifs.service';
 import { Gif } from './model/Gif';
 
@@ -44,7 +43,7 @@ export class GifsController {
     summary: 'Return info related for the gif-id specified',
   })
   @Get('/specificGif/:gifId')
-  getGif(@Param('gifId') gifId: string): Promise<Observable<Gif>> {
+  getGif(@Param('gifId') gifId: string): Promise<Gif> {
     console.log('this call is going to be mem cached');
     console.log('retrieving info by Gif Id:', gifId);
     return this.gifsService.getGif(gifId);
