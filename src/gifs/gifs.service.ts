@@ -28,8 +28,6 @@ export class GifsService {
       .toPromise()
       .then((response) => response.data);
 
-    console.log(gifsList);
-
     const gifsLista = [];
     gifsList.data.forEach((element) => {
       const gifInfo = new Gif(
