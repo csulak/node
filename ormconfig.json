@@ -5,6 +5,6 @@
     "username": "root",
     "password": "Notebook123!",
     "database": "nodeNestSql",
-    "entities": ["dist/tasks/entity/**/*.js"],
+    "entities": ["dist/tasks/entity/**/*.js", "dist/user/entity/**/*.js"],
     "synchronize": true
  }

@@ -3,13 +3,10 @@ import {
   HttpService,
   Inject,
   CACHE_MANAGER,
-  HttpException,
+  NotFoundException,
 } from '@nestjs/common';
-import { map, catchError } from 'rxjs/operators';
 import { Cache } from 'cache-manager';
 import { Gif } from './model/Gif';
-import { AxiosRequestConfig, AxiosResponse } from 'axios';
-import { Observable } from 'rxjs';
 
 export const API_KEY = 'Sc9MBZzmvQXVCYeC4imY4vOcOeQty4Hc';
 
@@ -23,44 +20,51 @@ export class GifsService {
   ) {}
 
   /**returns a list of gif that matches with the serchParam sent */
-  getGifs(searchParam: string) {
-    return this.http
+  async getGifs(searchParam: string) {
+    const gifsList = await this.http
       .get(
         `${API_URL}/gifs/search?api_key=${API_KEY}&q=${searchParam}&limit=10&offset=0&lang=en`,
       )
-      .pipe(map((response) => response.data));
+      .toPromise()
+      .then((response) => response.data);
+
+    console.log(gifsList);
+
+    const gifsLista = [];
+    gifsList.data.forEach((element) => {
+      const gifInfo = new Gif(
+        element.type,
+        element.id,
+        element.url,
+        element.title,
+      );
+      gifsLista.push(gifInfo);
+    });
+
+    return gifsLista;
   }
 
   /**returns info related an specific gif id */
-  async getGif(gifId: string): Promise<Observable<Gif>> {
-    const gifInfo = await this.http
+  async getGif(gifId: string): Promise<Gif> {
+    const gifInfoResponse = await this.http
       .get(`${API_URL}/gifs/${gifId}?api_key=${API_KEY}`)
-      // si descomentas la linea .toPromise(); y comentas todo par abajo, retornas una promesa y no un observable
-      //.toPromise();
-      .pipe(map((response) => response.data))
-      .pipe(
-        map((item) => {
-          return new Gif(
-            item.data.type,
-            item.data.id,
-            item.data.url,
-            item.data.title,
+      .toPromise()
+      .then((response) => response.data)
+      .catch((error) => {
+        if (error.response.status === 404) {
+          throw new NotFoundException(
+            `Could not find gif =( with id: ${gifId}`,
           );
-        }),
-      )
-      .pipe(
-        catchError((e) => {
-          throw new HttpException(
-            {
-              ...e.response.data,
-              mensaje_personalizado: `no se pudo encontrar la info para el Gif Id: ${gifId}`,
-            },
-            e.response.status,
-          );
-        }),
-      );
+        }
+      });
 
-    //return gifInfo.data;
+    const gifInfo = new Gif(
+      gifInfoResponse.data.type,
+      gifInfoResponse.data.id,
+      gifInfoResponse.data.url,
+      gifInfoResponse.data.title,
+    );
+
     return gifInfo;
   }
 }
