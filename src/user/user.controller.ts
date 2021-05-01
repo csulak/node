@@ -4,6 +4,7 @@ import { UserService } from './user.service';
 import { CreateUserDto } from './dto/create-user-dto';
 import { UserInterface } from './interfaces/UserInterface';
 import { LoginUserDto } from './dto/login-user-dto';
+import { UserCreatedDto } from './dto/user-created-dto';
 
 @ApiTags('user')
 @Controller('user')
@@ -21,7 +22,7 @@ export class UserController {
   }
 
   @Post()
-  createUser(@Body() user: CreateUserDto) {
+  createUser(@Body() user: CreateUserDto): Promise<UserCreatedDto> {
     return this.userService.createUser(user);
   }
 

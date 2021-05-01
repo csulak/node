@@ -8,6 +8,7 @@ import { AuthJwtService } from 'src/auth-jwt/services/auth-jwt.service';
 import { Repository } from 'typeorm';
 import { CreateUserDto } from './dto/create-user-dto';
 import { LoginUserDto } from './dto/login-user-dto';
+import { UserCreatedDto } from './dto/user-created-dto';
 import { UserEntity } from './entity/userEntity';
 import { UserInterface } from './interfaces/UserInterface';
 
@@ -38,7 +39,7 @@ export class UserService {
     }
   }
 
-  async createUser(user: CreateUserDto) {
+  async createUser(user: CreateUserDto): Promise<UserCreatedDto> {
     const passHashed = await this.authJwtService.hashPassword(user.password);
 
     const newUser = new UserEntity();
@@ -50,8 +51,10 @@ export class UserService {
     const userCreated = await this.userRepository.save(newUser);
 
     if (userCreated) {
-      delete userCreated.password;
-      return userCreated;
+      const userDto = new UserCreatedDto();
+      userDto.id = userCreated.id;
+
+      return userDto;
     }
   }
 
@@ -59,13 +62,17 @@ export class UserService {
     const userValidate = await this.validateUser(user.email, user.password);
 
     if (userValidate) {
+      delete userValidate.password;
       return this.authJwtService.generateJWT(userValidate);
     } else {
       return 'wrong credentials';
     }
   }
 
-  async validateUser(email: string, password: string) {
+  private async validateUser(
+    email: string,
+    password: string,
+  ): Promise<UserEntity> {
     const user = await this.findByEmail(email);
 
     const comparePasswords = await this.authJwtService.comparePasswords(
@@ -80,7 +87,7 @@ export class UserService {
     }
   }
 
-  async findByEmail(email: string) {
+  private async findByEmail(email: string): Promise<UserEntity> {
     const user = await this.userRepository.findOne({ email });
     if (user) {
       return user;
