@@ -91,3 +91,13 @@ api-key
 $ npm i passport passport-headerapikey @nestjs/passport --save
 
 $ npm i @types/passport @types/passport-http --save-dev
+
+
+
+
+################################
+
+
+npm i cookie-parser
+
+https://docs.nestjs.com/techniques/cookies
