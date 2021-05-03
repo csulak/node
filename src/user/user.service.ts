@@ -58,7 +58,7 @@ export class UserService {
     }
   }
 
-  async login(user: LoginUserDto) {
+  async login(user: LoginUserDto): Promise<string> {
     const userValidate = await this.validateUser(user.email, user.password);
 
     if (userValidate) {
