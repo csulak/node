@@ -29,7 +29,7 @@ export class PokemonsController {
   @Get(':offset')
   getPokemons(@Param('offset') offset: number): Promise<any> {
     console.log('this call is going to be redis cached');
-    console.log('retrieving list of pokemons with offset: ', offset);
+    console.log('retrieving list of pokemons with offset: ', offset), '\n';
     return this.pokemonsService.getPokemons(offset);
   }
 
@@ -41,7 +41,7 @@ export class PokemonsController {
   @Get('/specificPokemon/:pokemonName')
   getPokemon(@Param('pokemonName') pokemonName: string): Promise<Pokemon> {
     console.log('this call is going to be redis cached');
-    console.log('retrieving info by pokemon: ', pokemonName);
+    console.log('retrieving info by pokemon: ', pokemonName, '\n');
     return this.pokemonsService.getPokemon(pokemonName);
   }
 }

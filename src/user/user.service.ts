@@ -1,6 +1,7 @@
 import {
   Injectable,
   NotFoundException,
+  PreconditionFailedException,
   UnauthorizedException,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -40,6 +41,8 @@ export class UserService {
   }
 
   async createUser(user: CreateUserDto): Promise<UserCreatedDto> {
+    await this.ValidateEmailInUse(user.email);
+
     const passHashed = await this.authJwtService.hashPassword(user.password);
 
     const newUser = new UserEntity();
@@ -95,6 +98,13 @@ export class UserService {
       throw new NotFoundException(
         `Could not find user =( with email: ${email}`,
       );
+    }
+  }
+
+  private async ValidateEmailInUse(email: string): Promise<void> {
+    const user = await this.userRepository.findOne({ email });
+    if (user) {
+      throw new PreconditionFailedException(`Email already in use: ${email}`);
     }
   }
 }

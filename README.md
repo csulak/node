@@ -13,8 +13,16 @@
 
 # About
 
-Project based in nest, basic crud in order to learn about how to connect to DDBB SQL (MySQL -> typeorm) and No-SQL (Mongo -> mongoose).
-HTTP Module (consume apis), Mem Cache, Redis Cache, Swagger
+Project based in nest, basic crud in order to learn about:
+
+- How to connect to DDBB SQL (MySQL -> typeorm)
+- No-SQL (Mongo -> mongoose)
+- HTTP Module (consume apis)
+- Mem Cache
+- Redis Cache
+- Login (JWT)
+- Endpoints with api-key
+- Swagger
 
 # Installation
 
@@ -102,7 +110,7 @@ You can see in the root of the project are: app.module, app.service, app.control
 - [mongo with Nest ](https://docs.nestjs.com/techniques/database)
 - [mysql with Nest](https://docs.nestjs.com/techniques/mongodb)
 
-From [here](https://www.youtube.com/watch?v=ulfU5vY6I78&ab_channel=Academind) I learnt to make PUT in mongo and throw 404 exception]
+From [here](https://www.youtube.com/watch?v=ulfU5vY6I78&ab_channel=Academind) I learnt to make PUT in mongo and throw 404 exception
 
 Express Js beginner [course](https://www.youtube.com/watch?v=794Q71KVw1k&ab_channel=Fazt)
 
@@ -111,3 +119,9 @@ From [here](https://www.youtube.com/watch?v=pCxL1sdjeCc&ab_channel=FaztCode) I l
 How To apply [Swagger](https://www.youtube.com/watch?v=VipXIb1KzaA&ab_channel=DominiCode) in your node project (basic)
 
 How To apply [Swagger](https://www.youtube.com/watch?v=r0TP4DdXeIk&ab_channel=KelvinMai) in your node project (intermediate)
+
+How to apply Cookies in nest [official doc](https://docs.nestjs.com/techniques/cookies)
+
+Decode and Encode tokens [here](https://jwt.io/)
+
+JWT LOGIN HASH implemented as [Observable way](https://www.youtube.com/watch?v=bbDDSylRM04&ab_channel=ThomasOliver) (I migrated this solution to Promise way)
