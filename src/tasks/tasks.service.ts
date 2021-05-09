@@ -13,26 +13,26 @@ export class TasksService {
     return await this.taskModel.find();
   }
 
-  async getTask(id: string) {
-    let task;
+  async getTask(id: string): Promise<Task> {
+    let task: Task;
 
     try {
       task = await this.taskModel.findById(id);
     } catch (error) {
-      throw new NotFoundException(`Could not find product =( with id: ${id}`);
+      throw new NotFoundException(`Could not find task =( with id: ${id}`);
     }
     if (!task) {
-      throw new NotFoundException(`Could not find product =( with id: ${id}`);
+      throw new NotFoundException(`Could not find task =( with id: ${id}`);
     }
     return task;
   }
 
-  async createTask(task: CreateTaskDto) {
+  async createTask(task: CreateTaskDto): Promise<Task> {
     const newTask = new this.taskModel(task);
     return await newTask.save();
   }
 
-  async updateTask(taskToUpdate: UpdateTaskDto) {
+  async updateTask(taskToUpdate: UpdateTaskDto): Promise<Task> {
     const updatedTask = await this.getTask(taskToUpdate.id);
 
     if (taskToUpdate.title) {
@@ -49,6 +49,10 @@ export class TasksService {
   }
 
   async deleteTask(id: string) {
-    return await this.taskModel.deleteOne({ _id: id });
+    try {
+      return await this.taskModel.deleteOne({ _id: id });
+    } catch (error) {
+      throw new NotFoundException(`Could not delete task =( with id: ${id}`);
+    }
   }
 }

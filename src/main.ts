@@ -22,6 +22,6 @@ async function bootstrap() {
   //############ Swagger Config ##############
 
   await app.listen(3000);
-  console.log(`app running on: ${await app.getUrl()}`);
+  console.log(`app running on: ${await app.getUrl()}`, '\n');
 }
 bootstrap();

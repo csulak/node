@@ -30,7 +30,7 @@ export class PokemonsController {
   @Get(':offset')
   getGifs(@Param('offset') offset: number) {
     console.log('this call is going to be redis cached');
-    console.log('retrieving list of pokemons with offset: ', offset);
+    console.log('retrieving list of pokemons with offset: ', offset, '\n');
     return this.pokemonsService.getPokemons(offset);
   }
 
@@ -44,7 +44,7 @@ export class PokemonsController {
     @Param('pokemonName') pokemonName: string,
   ): Promise<Observable<Pokemon>> {
     console.log('this call is going to be redis cached');
-    console.log('retrieving info by pokemon: ', pokemonName);
+    console.log('retrieving info by pokemon: ', pokemonName), '\n';
     return this.pokemonsService.getPokemon(pokemonName);
   }
 }

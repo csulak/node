@@ -13,6 +13,10 @@ import { PokemonsService } from './pokemons/pokemons.service';
 import { PokemonsModule } from './pokemons/pokemons.module';
 import { AuthModule } from './auth/auth.module';
 import { ConfigModule } from '@nestjs/config';
+import { UserModule } from './user/user.module';
+import { UserController } from './user/user.controller';
+import { UserService } from './user/user.service';
+import { AuthJwtModule } from './auth-jwt/auth-jwt.module';
 
 @Module({
   imports: [
@@ -22,13 +26,22 @@ import { ConfigModule } from '@nestjs/config';
     GifsModule,
     PokemonsModule,
     AuthModule,
+    UserModule,
+    AuthJwtModule,
   ],
   controllers: [
     AppController,
     TasksController,
     GifsController,
     PokemonsController,
+    UserController,
   ],
-  providers: [AppService, TasksService, GifsService, PokemonsService],
+  providers: [
+    AppService,
+    TasksService,
+    GifsService,
+    PokemonsService,
+    UserService,
+  ],
 })
 export class AppModule {}

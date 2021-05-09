@@ -34,7 +34,7 @@ export class GifsController {
   @Get(':searchParam')
   getGifs(@Param('searchParam') searchParam: string) {
     console.log('this call is going to be mem cached');
-    console.log('searchings gifs by param: ', searchParam);
+    console.log('searchings gifs by param: ', searchParam, '\n');
     return this.gifsService.getGifs(searchParam);
   }
 
@@ -46,7 +46,7 @@ export class GifsController {
   @Get('/specificGif/:gifId')
   getGif(@Param('gifId') gifId: string): Promise<Observable<Gif>> {
     console.log('this call is going to be mem cached');
-    console.log('retrieving info by Gif Id:', gifId);
+    console.log('retrieving info by Gif Id:', gifId, '\n');
     return this.gifsService.getGif(gifId);
   }
 }
