@@ -32,6 +32,8 @@ $ npm install
 
 # MySQL branch(master)
 
+### HTTP calls made as Promise way
+
 - You need to check the configuration/credentials in [ormconfig.json](https://github.com/csulak/node/blob/master/ormconfig.json) file
 
 - Make sure to have an MySQL instance running on the specified port (default 3306)
@@ -45,6 +47,8 @@ $ npm install
 - [Here](https://www.youtube.com/watch?v=TG6WAnyeDRw&ab_channel=linuxhint) you have a basic tutorial of how to install, run and create MySQL DB on Linux
 
 # Mongo branch
+
+### HTTP calls made as Observable way
 
 - Make sure to have an Mongo DB instance running on the specified port
 
