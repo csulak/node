@@ -3,6 +3,7 @@
 ### Content:
 
 - [About](#about)
+- [Versions](#versions)
 - [Installation](#installation)
 - [MySQL branch(master)](<#mysql-branch(master)>)
 - [Mongo branch](#mongo-branch)
@@ -23,6 +24,12 @@ Project based in nest, basic crud in order to learn about:
 - Login (JWT)
 - Endpoints with api-key
 - Swagger
+
+# Versions
+
+| Node   | Nest  | npm    | yarn    | Docker  | Docker Compose |
+| ------ | ----- | ------ | ------- | ------- | -------------- |
+| 16.2.0 | 7.6.0 | 7.12.0 | 1.22.10 | 20.10.6 | 1.29.1         |
 
 # Installation
 
