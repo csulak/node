@@ -34,6 +34,12 @@ import { AuthJwtModule } from './auth-jwt/auth-jwt.module';
     PokemonsController,
     UserController,
   ],
-  providers: [AppService, TasksService, GifsService, PokemonsService, UserService],
+  providers: [
+    AppService,
+    TasksService,
+    GifsService,
+    PokemonsService,
+    UserService,
+  ],
 })
 export class AppModule {}
