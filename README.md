@@ -8,6 +8,7 @@
 - [MySQL branch(master)](<#mysql-branch(master)>)
 - [Mongo branch](#mongo-branch)
 - [Running the app](#running-the-app)
+- [Docker Compose](#docker-compose)
 - [Swagger Endpoints](#swagger-endpoints)
 - [Steps to create base project](#steps-to-create-base-project)
 - [Util links](#util-links)
@@ -83,6 +84,27 @@ $ npm run start:dev
 
 # production mode
 $ npm run start:prod
+```
+
+# Docker Compose
+
+```bash
+
+# Step 0
+$ npm run build
+
+# Step 1
+$ docker-compose build
+
+# Step 2
+$ docker-compose up
+
+# helpers
+$ docker-compose down
+$ docker images
+$ docker rm image-name
+$ docker ps
+
 ```
 
 # Swagger Endpoints
